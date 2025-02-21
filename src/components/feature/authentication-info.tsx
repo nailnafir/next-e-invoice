@@ -10,9 +10,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { useRouter } from "next/navigation";
 
 export default function AuthenticationInfo() {
   const isAuthenticated = false;
+
+  const router = useRouter();
   
   const [open, setOpen] = useState<boolean>(false);
 
@@ -42,11 +45,18 @@ export default function AuthenticationInfo() {
     </DropdownMenu>
   ) : (
     <div className="flex flex-row gap-2">
-      <Button variant="outline" className="h-10 max-sm:w-10 sm:px-4 sm:py-2">
+      <Button
+        onClick={() => router.push("/sign-in")}
+        variant="outline"
+        className="h-10 max-sm:w-10 sm:px-4 sm:py-2"
+      >
         <LogIn />
         <span className="max-sm:sr-only">Masuk</span>
       </Button>
-      <Button className="h-10 max-sm:w-10 sm:px-4 sm:py-2">
+      <Button
+        onClick={() => router.push("/sign-up")}
+        className="h-10 max-sm:w-10 sm:px-4 sm:py-2"
+      >
         <UserPlus />
         <span className="max-sm:sr-only">Daftar</span>
       </Button>
